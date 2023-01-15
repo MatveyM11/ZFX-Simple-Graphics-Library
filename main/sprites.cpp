@@ -39,16 +39,38 @@ int main(int argc, char *argv[])
     // Read image file and create a pixmap
     attribs.valuemask = XpmSize;
     XpmReadFileToPixmap(display, window, "../resources/sprites/mech100.xpm", &pixmap, NULL, &attribs);
+    
+    // set the icon for the window
+    XWMHints *wm_hints = XAllocWMHints();
+    wm_hints->flags = IconPixmapHint;
+    wm_hints->icon_pixmap = pixmap;
+    XSetWMHints(display, window, wm_hints);
+    XFree(wm_hints);
+    
+     // Create two more pixmaps
+    Pixmap pixmap2;
+    Pixmap pixmap3;
+    XpmReadFileToPixmap(display, window, "../resources/sprites/mech101.xpm", &pixmap2, NULL, &attribs);
+    XpmReadFileToPixmap(display, window, "../resources/sprites/mech110.xpm", &pixmap3, NULL, &attribs);
+
 
     // Infinite loop to wait for events
     while (1)
     {
         XNextEvent(display, &event);
 
-        // Get the image from the pixmap and draw it in the window
         XImage *image;
         image = XGetImage(display, pixmap, 0, 0, attribs.width, attribs.height, AllPlanes, ZPixmap);
-        XPutImage(display, window,
+        XPutImage(display, window, DefaultGC(display, screen), image, 0, 0, x, y, attribs.width, attribs.height);
+
+          // Draw the second image
+        image = XGetImage(display, pixmap2, 0, 0, attribs.width, attribs.height, AllPlanes, ZPixmap);
+        XPutImage(display, window, DefaultGC(display, screen), image, 0,0, 350, 50, attribs.width, attribs.height);
+        
+        // Draw the third image
+        image = XGetImage(display, pixmap3, 0, 0, attribs.width, attribs.height, AllPlanes, ZPixmap);
+        XPutImage(display, window, DefaultGC(display, screen), image, 0, 0, 350, 400, attribs.width, attribs.height);
+    }
         // Close the connection to the X server
         XCloseDisplay(display);
         return 0;
