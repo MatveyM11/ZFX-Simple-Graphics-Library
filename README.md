@@ -7,7 +7,8 @@ GFX is a terribly designed piece of [DATA EXPUNGED], worst part of it comes when
 And because of it you're going to have such pleasant video effects as flickering and tearing.
 Also it has no text support, so in our project we have implemented our own font, besides of the fact that there's no support for the images drawing so we've implement our own sprites storage as 2d c-arrays and pixel by pixel render for them.
 
-This early version of this wrapper, isn't wrapper at all, it's just a singular file for now, but it's already has a double buffering implemented, text render and drawing of the primitives such as polygons, circles, rectangles. Proper image drawing possibly will be implemented later with spng lib, for now it's just a 2d-carray drawn pixels by pixels with option to change pixels thickness. 
+This early version of this wrapper, isn't wrapper at all, it's just a singular file for now, but it's already has a double buffering implemented, text render and drawing of the primitives such as polygons, circles, rectangles. 
+Even more, ZFX also supports sprite in format of the .xmp images and animations as a series of the .xmp images. 
 
 
 *DISCLAIMER!
