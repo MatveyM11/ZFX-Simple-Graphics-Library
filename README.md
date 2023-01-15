@@ -1,4 +1,4 @@
-# ZFX-Simple-Graphics-Library
+# ZFX - Simple Graphics Library
 Better version of this project - https://www3.nd.edu/~dthain/courses/cse20211/fall2013/gfx/, that was used at my university at first semester for the Programming 1 practice course. 
 Here is my team semestrial project that was made with it - https://github.com/MatveyM11/Programming-I-Semester-Project.
 
