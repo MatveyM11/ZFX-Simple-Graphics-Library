@@ -38,20 +38,32 @@ int main(int argc, char *argv[]) {
     // Set the XpmSize attribute for the XpmReadFileToPixmap function
     attribs.valuemask = XpmSize;
 
-    // Loop through a series of XPM image files
-for (int i = 1; i <= 5; i++) {
-char filename[256];
-sprintf(filename, "../resources/sprites/mech%d.xpm", i);
-XpmReadFileToPixmap(display, window, filename, &pixmap, NULL, &attribs);
-XImage *image = XGetImage(display, pixmap, 0, 0, attribs.width, attribs.height, AllPlanes, ZPixmap);
-XPutImage(display, window, DefaultGC(display, screen), image, 0, 0, x, y, attribs.width, attribs.height);
-XFlush(display);
-usleep(1000000);
-}
-//Force display to be updated
-XFlush(display);
+     // Loop through a series of XPM image files
 
-// Close the display
-XCloseDisplay(display);
-return 0;
+    while (true)
+    {
+        for (int i = 1; i <= 3; i++)
+        {
+            char filename[256];
+            sprintf(filename, "/home/matvey/Descargas/mech%d.xpm", i);
+            XpmReadFileToPixmap(display, window, filename, &pixmap, NULL, &attribs);
+            XImage *image = XGetImage(display, pixmap, 0, 0, attribs.width, attribs.height, AllPlanes, ZPixmap);
+           // XClearArea(display, window, x, y, attribs.width, attribs.height, False);
+           XFreePixmap(display, pixmap);
+
+            XPutImage(display, window, DefaultGC(display, screen), image, 0, 0, x, y, attribs.width, attribs.height);
+            
+            XFlush(display);
+            usleep(1000000);
+        }
+         XClearArea(display, window, x, y, attribs.width, attribs.height, False);
+        x = x + 10;
+
+        // Force display to be updated
+    }
+    XFlush(display);
+
+    // Close the display
+    XCloseDisplay(display);
+    return 0;
 }
