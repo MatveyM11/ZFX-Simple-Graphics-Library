@@ -11,5 +11,5 @@ This early version of this wrapper, isn't wrapper at all, it's just a singular f
 Even more, ZFX also supports sprite in format of the .xmp images and animations as a series of the .xmp images. 
 
 
-*DISCLAIMER!
+* DISCLAIMER!
 This X11 wrapper is a joke, don't use it for any non-pet projects and even for them look better at SDL, RayLib or anything else.
